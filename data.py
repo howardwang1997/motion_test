@@ -5,7 +5,7 @@ import pandas as pd
 import os
 
 # os.listdir(../../)
-path = '../../data/snowboard/20250524/20250524125735-后刃落叶飘.txt'
+path = '../../data/snowboard/20250524_split/20250524132532-S型_0.csv'
 # Read the file into a DataFrame
 # df = pd.read_csv(path, sep='\t')
 
@@ -25,7 +25,10 @@ def convert_time(time_str):
 
 
 def read_data(path: str): #-> pd.DataFrame
-    df = pd.read_csv(path, sep='\t')
+    if 'txt' in path:
+        df = pd.read_csv(path, sep='\t')
+    else:
+        df = pd.read_csv(path)
     df.iloc[:, 0] = df.iloc[:, 0].apply(convert_time)
 
     # # Verify results

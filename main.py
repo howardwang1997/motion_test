@@ -7,29 +7,30 @@ from draw import scatter_tsne
 
 
 def main():
-	window = 50
+	# print('start')
+	window = 64
 	
-	path = '../../data/snowboard/20250524/S_turn_1.txt'
+	path = '../../data/snowboard/20250524_split/20250524132532-S型_0.csv'
 	data = read_data(path)
 	assert data.isnull().values.any() == 0
 	dataset_1 = make_dataset(data, window=window)
 	
-	path = '../../data/snowboard/20250524/S_turn_2.txt'
+	path = '../../data/snowboard/20250524_split/20250524132532-S型_1.csv'
 	data = read_data(path)
 	assert data.isnull().values.any() == 0
 	dataset_2 = make_dataset(data, window=window)
 	
-	path = '../../data/snowboard/20250524/straight.txt'
+	path = '../../data/snowboard/20250524_split/20250524130407-直滑降_0.csv'
 	data = read_data(path)
 	assert data.isnull().values.any() == 0
 	dataset_3 = make_dataset(data, window=window)
 	
-	path = '../../data/snowboard/20250524/J_front.txt'
+	path = '../../data/snowboard/20250524_split/20250524131025-前刃J型_0.csv'
 	data = read_data(path)
 	assert data.isnull().values.any() == 0
 	dataset_4 = make_dataset(data, window=window)
 	
-	path = '../../data/snowboard/20250524/J_back.txt'
+	path = '../../data/snowboard/20250524_split/20250524131059-后刃J型_0.csv'
 	data = read_data(path)
 	assert data.isnull().values.any() == 0
 	dataset_5 = make_dataset(data, window=window)
@@ -47,7 +48,7 @@ def main():
 	
 	embed = clustering_tsne(dataset)
 	print(seps, lengths)
-	scatter_tsne(embed, seps, labels, colors, save_path=f'../../data/snowboard/20250524/TSNE_{window}.png')
+	scatter_tsne(embed, seps, labels, colors, save_path=f'../../data/snowboard/20250524_split/TSNE_{window}.png')
 	
 if __name__ == '__main__':
 	main()
